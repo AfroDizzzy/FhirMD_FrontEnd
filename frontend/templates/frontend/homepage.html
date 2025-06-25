@@ -1,0 +1,46 @@
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'frontend/homepageStyle.css' %}" />
+
+<header>
+  <div class="header-content">
+    <h1>Welcome to Django</h1>
+    <p>Your modern web application dashboard</p>
+  </div>
+</header>
+
+<main>
+  <div class="content-section">
+    <h2>Current Tasks</h2>
+    <ul class="item-list">
+      {% for item in items %}
+      <li class="item">
+        <a class="item-link">
+          <div class="item-name">{{ item.name }}</div>
+          <div class="item-description">{{ item.description }}</div>
+        </a>
+      </li>
+      {% empty %}
+      <li class="item">
+        <div class="item-name">No items available</div>
+        <div class="item-description">
+          There are currently no items to display.
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div>
+    <p>&copy; 2025 Django Application. All rights reserved.</p>
+  </div>
+</footer>
+
+{% endblock %}
