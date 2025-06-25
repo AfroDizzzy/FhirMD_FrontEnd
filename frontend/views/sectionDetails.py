@@ -3,5 +3,12 @@ from django.http import HttpResponse
 
 
 def sectionDetails(request, sectionDetails):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % sectionDetails)
+    context = {
+        'sectionDetails': sectionDetails,
+        'page_title': ''
+    }
+    print('eeeeeeeeeeeee')
+    print(sectionDetails)
+
+    
+    return render(request, 'frontend/sectionDetails.html', context)

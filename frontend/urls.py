@@ -7,9 +7,10 @@ urlpatterns = [
     path("", homepage.homepage, name="homepage"),
     # http://127.0.0.1:8000/index
     path("index", index.index, name="index"),
-    # http://127.0.0.1:8000/sections
-    path("sections", sections.sections, name="sections"),
 
-    # 
+    # http://127.0.0.1:8000/sections
+    # path("sections", sections.sections, name="sections"),
+
+    # http://127.0.0.1:8000/sections/allergies
     path("sections/<str:sectionDetails>/", sectionDetails.sectionDetails, name="sectionDetails"),
 ]
