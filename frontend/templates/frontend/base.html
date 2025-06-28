@@ -1,11 +1,15 @@
 {% load static %}
 <html lang="en">
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="{% static 'frontend/images/fire.png' %}"
-  />
+  <link rel="stylesheet" href="{% static 'frontend/base.css' %}" />
+  <link rel="shortcut icon"
+        type="image/png"
+        href="{% static 'frontend/images/fire.png' %}" />
   <body id="content">
+    <header>
+      <div class="header-content">
+        <h1>HL7 FHIR Search</h1>
+      </div>
+    </header>
     {% block content %}{% endblock %}
   </body>
 </html>
