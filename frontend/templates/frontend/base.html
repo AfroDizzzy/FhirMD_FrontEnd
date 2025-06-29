@@ -1,14 +1,22 @@
 {% load static %}
 <html lang="en">
-  <title>FHIR-Australia</title>
-  <link rel="stylesheet" href="{% static 'frontend/base.css' %}" />
-  <link rel="shortcut icon"
-        type="image/png"
-        href="{% static 'frontend/images/fire.png' %}" />
+  <head>
+    <title>FHIR Australia</title>
+    <meta name="description"
+          content="FHIR Australia - A platform for FHIR resources and information in Australia.">
+    <meta name="keywords"
+          content="FHIR, Australia, healthcare, interoperability, HL7, medical data">
+    <link rel="stylesheet" href="{% static 'frontend/baseStyle.css' %}" />
+    <link rel="shortcut icon"
+          type="image/png"
+          href="{% static 'frontend/images/fire.png' %}" />
+  </head>
   <body id="content">
     <header>
       <div class="header-content">
-        <h1>HL7 FHIR Search</h1>
+        <a class="homepage-link" href="{% url 'homepage' %}">
+          <h1 class="homepage-text">FHIR Australia</h1>
+        </a>
       </div>
     </header>
     {% block content %}
