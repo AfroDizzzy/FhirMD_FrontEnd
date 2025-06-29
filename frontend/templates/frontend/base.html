@@ -1,5 +1,6 @@
 {% load static %}
 <html lang="en">
+  <title>FHIR-Australia</title>
   <link rel="stylesheet" href="{% static 'frontend/base.css' %}" />
   <link rel="shortcut icon"
         type="image/png"
@@ -10,6 +11,7 @@
         <h1>HL7 FHIR Search</h1>
       </div>
     </header>
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock content %}
   </body>
 </html>
