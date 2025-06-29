@@ -9,8 +9,9 @@
       <ul class="item-list">
         {% for item in items %}
           <li class="item">
-            <a class="item-link" href="{% url 'sectionDetails' item %}">
-              <div class="item-name">{{ item }}</div>
+            <a class="item-link" href="{% url 'sectionDetails' item.resourceType %}">
+              <div class="item-name">{{ item.resourceType }}</div>
+              <div class="item-name">{{ item.id }}</div>
             </a>
           </li>
         {% empty %}
@@ -33,4 +34,4 @@
       <p>2025 Django Application. All rights reserved.</p>
     </div>
   </footer>
-{% endblock %}
+{% endblock content %}
