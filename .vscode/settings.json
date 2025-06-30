@@ -1,0 +1,13 @@
+{
+  "python.analysis.extraPaths": [
+    "./frontend",
+    "./frontend",
+    "./frontend/models"
+  ],
+  "[html][django-html][handlebars][hbs][mustache][jinja][jinja-html][nj][njk][nunjucks][twig]": {
+    "editor.defaultFormatter": "monosans.djlint"
+  },
+  "[django-html]": {
+    "editor.defaultFormatter": "monosans.djlint"
+  }
+}
