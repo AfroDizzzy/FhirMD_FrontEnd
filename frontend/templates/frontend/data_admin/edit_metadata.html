@@ -1,0 +1,44 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% load custom_filters %} {# Still need get_item filter #}
+{% block content %}
+<link rel="stylesheet" href="{% static 'frontend/data_admin_style.css' %}" />
+<main>
+    <section class="content-section">
+        <h2>{{ page_title }}</h2>
+        <p>Editing metadata for: <strong>{{ json_filename }}</strong></p>
+
+        {% if error_message %}
+            <div class="error-message">{{ error_message }}</div>
+        {% endif %}
+
+        <form method="post" class="metadata-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="id_filename">Associated JSON File:</label>
+                <input type="text" id="id_filename" value="{{ json_filename }}" readonly class="readonly-field">
+            </div>
+
+            {# Loop through the (field_name_in_dict, display_name_for_label) tuples #}
+            {% for field_name, display_name in metadata_fields_display %}
+                <div class="form-group">
+                    <label for="id_{{ field_name|lower }}">{{ display_name }}:</label> {# Use display_name for the label #}
+                    <input
+                        type="text"
+                        name="{{ field_name }}" {# Use the actual field_name for the input's 'name' attribute #}
+                        id="id_{{ field_name|lower }}"
+                        value="{{ current_metadata|get_item:field_name|default_if_none:'' }}"
+                        {% if field_name == "ResourceType" and current_metadata.ResourceType %}readonly class="readonly-field"{% endif %}
+                    >
+                </div>
+            {% endfor %}
+
+            <div class="form-actions">
+                <button type="submit" class="save-button">Save Metadata</button>
+                <a href="{% url 'data_admin_index' %}" class="back-button">Back to Admin Index</a>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock content %}

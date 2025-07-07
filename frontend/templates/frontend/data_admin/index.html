@@ -1,0 +1,34 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'frontend/data_admin_style.css' %}" />
+<main>
+    <section class="content-section">
+        <h2>{{ page_title }}</h2>
+        <p>Manage metadata for your FHIR JSON test data files. Creating/editing metadata here will update the `.md` files in your `test_data` directory and reload data for the main site.</p>
+
+        {# NEW EXPORT BUTTON #}
+        <div class="admin-actions">
+            <a href="{% url 'data_admin_export_md_zip' %}" class="export-button">Export All MD Files as Zip</a>
+        </div>
+        {# END NEW EXPORT BUTTON #}
+
+        <ul class="admin-file-list">
+            {% for file_info in json_files %}
+                <li class="admin-file-item {% if file_info.has_metadata %}has-metadata{% else %}no-metadata{% endif %}">
+                    <span>{{ file_info.filename }}</span>
+                    {% if file_info.has_metadata %}
+                        <span class="status-badge status-has">Has Metadata</span>
+                        <a href="{% url 'data_admin_edit_metadata' json_filename=file_info.filename %}" class="edit-button">Edit Metadata</a>
+                    {% else %}
+                        <span class="status-badge status-no">No Metadata</span>
+                        <a href="{% url 'data_admin_edit_metadata' json_filename=file_info.filename %}" class="create-button">Create Metadata</a>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li class="admin-file-item">No JSON files found in the test data directory ({{ json_files_directory }}).</li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock content %}
