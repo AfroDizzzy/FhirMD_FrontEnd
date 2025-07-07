@@ -124,3 +124,57 @@ footer {
     padding: 1.5rem;
   }
 }
+
+/* NEW styles for displaying current filters */
+.current-filters {
+    background-color: #e9f5ff; /* Light blue background */
+    border: 1px solid #cce5ff; /* Light blue border */
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.current-filters h3 {
+    margin-top: 0;
+    color: #0056b3; /* Darker blue for heading */
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.current-filters ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Display list items in a row */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 15px; /* Space between filter items */
+}
+
+.current-filters li {
+    background-color: #d1ecf1; /* Even lighter blue for tags */
+    color: #0c5460; /* Darker text */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.current-filters li strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.current-filters .back-to-homepage-filters {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    font-size: 0.9em;
+}
+
+.current-filters .back-to-homepage-filters:hover {
+    background-color: #0056b3;
+}

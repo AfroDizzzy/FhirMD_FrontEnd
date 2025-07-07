@@ -1,0 +1,7 @@
+.search-icon {
+    width: 24px; /* Set your desired width (e.g., 24px, 30px, 1.5em) */
+    height: 24px; /* Set your desired height (should generally match width for icons) */
+    filter: invert(50%); /* Adjust icon color if needed */
+    /* You might also want to add: */
+    vertical-align: middle; /* Helps align the icon vertically with text/input */
+}

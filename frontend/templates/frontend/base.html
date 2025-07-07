@@ -7,16 +7,23 @@
     <meta name="keywords"
           content="FHIR, Australia, healthcare, interoperability, HL7, medical data">
     <link rel="stylesheet" href="{% static 'frontend/baseStyle.css' %}" />
+    {# Include searchComponent.css (which holds global search bar styles now) #}
+    <link rel="stylesheet" href="{% static 'frontend/searchComponent.css' %}" />
     <link rel="shortcut icon"
           type="image/png"
           href="{% static 'frontend/images/fire.png' %}" />
   </head>
   <body id="content">
-    <header>
-      <div class="header-content">
+    <header class="global-header">
+      <div class="header-content-wrapper">
         <a class="homepage-link" href="{% url 'homepage' %}">
           <h1 class="homepage-text">FHIR Australia</h1>
         </a>
+
+        {# This is the crucial part for the GLOBAL SEARCH BAR #}
+        <form method="GET" action="{% url 'homepage' %}" class="global-search-form">
+          {% include 'frontend/global_search_bar.html' %}
+        </form>
       </div>
     </header>
     {% block content %}
