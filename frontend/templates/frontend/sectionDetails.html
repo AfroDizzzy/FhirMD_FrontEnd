@@ -1,4 +1,4 @@
-{% include "frontend/base.html" %}
+{% extends "frontend/base.html" %}
 {% load static %}
 {% block content %}
   <link rel="stylesheet"
@@ -9,70 +9,15 @@
       <ul class="item-list">
         {% for item in items %}
           <li class="item">
-            <div class="item-link">
+            {# Link to the new json_detail page, passing the item.id #}
+            <a class="item-link" href="{% url 'json_detail' item_id=item.id %}">
               <div class="item-id">ID: {{ item.id }}</div>
-              <div class="item-resourceType">{{ item.resourceType }}</div>
-              <div class="item-description">{{ item.code.text }}</div>
-              <div class="item-details">
-                <div class="detail-row">
-                  <span class="detail-label">Status:</span>
-                  <span class="detail-value status-{{ item.clinicalStatus.coding.0.code }}">{{ item.clinicalStatus.text }}</span>
-                </div>
-                {% if item.verificationStatus %}
-                  <div class="detail-row">
-                    <span class="detail-label">Verification:</span>
-                    <span class="detail-value status-{{ item.verificationStatus.coding.0.code }}">{{ item.verificationStatus.text }}</span>
-                  </div>
-                {% endif %}
-                {% if item.category %}
-                  <div class="detail-row">
-                    <span class="detail-label">Category:</span>
-                    <span class="detail-value">{{ item.category.0|title }}</span>
-                  </div>
-                {% endif %}
-                {% if item.criticality %}
-                  <div class="detail-row">
-                    <span class="detail-label">Criticality:</span>
-                    <span class="detail-value">{{ item.criticality|title }}</span>
-                  </div>
-                {% endif %}
-                <div class="detail-row">
-                  <span class="detail-label">Patient:</span>
-                  <span class="detail-value">{{ item.patient.reference }}</span>
-                </div>
-                {% if item.onsetDateTime %}
-                  <div class="detail-row">
-                    <span class="detail-label">Onset:</span>
-                    <span class="detail-value">{{ item.onsetDateTime }}</span>
-                  </div>
-                {% endif %}
-                <div class="detail-row">
-                  <span class="detail-label">Recorded:</span>
-                  <span class="detail-value">{{ item.recordedDate }}</span>
-                </div>
-                {% if item.reaction %}
-                  {% for reaction in item.reaction %}
-                    <div class="detail-row">
-                      <span class="detail-label">Reaction:</span>
-                      <span class="detail-value">
-                        {{ reaction.manifestation.0.text }}
-                        {% if reaction.severity %}(<span class="severity-{{ reaction.severity }}">{{ reaction.severity }}</span>){% endif %}
-                      </span>
-                    </div>
-                    {% if reaction.substance %}
-                      <div class="detail-row">
-                        <span class="detail-label">Substance:</span>
-                        <span class="detail-value">{{ reaction.substance.text }}</span>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                {% endif %}
-              </div>
-            </div>
+              <div class="item-resourceType">Type: {{ item.resourceType }}</div>
+            </a>
           </li>
         {% empty %}
           <li class="item">
-            <div class="item-name">No items avaissslable</div>
+            <div class="item-name">No items available</div>
             <div class="item-description">There are currently no items to display.</div>
           </li>
         {% endfor %}

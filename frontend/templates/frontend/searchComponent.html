@@ -6,9 +6,9 @@
   <div class="input-float-label small-6 large-6 columns" id="search-by-text">
     <input
       type="text"
-      name="search_terms"
+      name="search_terms" {# <--- This is the key field #}
       id="search_search_text"
-      value=""
+      value="{{ request.GET.search_terms|default_if_none:'' }}" {# Added to keep search term in input #}
       placeholder="enter a word or words to search"
     />
     <label for="search[search_text]">Search text</label>
