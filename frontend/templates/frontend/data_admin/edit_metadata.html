@@ -20,17 +20,25 @@
                 <input type="text" id="id_filename" value="{{ json_filename }}" readonly class="readonly-field">
             </div>
 
-            {# Loop through the (field_name_in_dict, display_name_for_label) tuples #}
             {% for field_name, display_name in metadata_fields_display %}
                 <div class="form-group">
-                    <label for="id_{{ field_name|lower }}">{{ display_name }}:</label> {# Use display_name for the label #}
-                    <input
-                        type="text"
-                        name="{{ field_name }}" {# Use the actual field_name for the input's 'name' attribute #}
-                        id="id_{{ field_name|lower }}"
-                        value="{{ current_metadata|get_item:field_name|default_if_none:'' }}"
-                        {% if field_name == "ResourceType" and current_metadata.ResourceType %}readonly class="readonly-field"{% endif %}
-                    >
+                    <label for="id_{{ field_name|lower }}">{{ display_name }}:</label>
+                    {# Use textarea for 'Notes' field #}
+                    {% if field_name == "Notes" %}
+                        <textarea
+                            name="{{ field_name }}"
+                            id="id_{{ field_name|lower }}"
+                            rows="4"
+                        >{{ current_metadata|get_item:field_name|default_if_none:'' }}</textarea>
+                    {% else %}
+                        <input
+                            type="text"
+                            name="{{ field_name }}"
+                            id="id_{{ field_name|lower }}"
+                            value="{{ current_metadata|get_item:field_name|default_if_none:'' }}"
+                            {% if field_name == "ResourceType" and current_metadata.ResourceType %}readonly class="readonly-field"{% endif %}
+                        >
+                    {% endif %}
                 </div>
             {% endfor %}
 

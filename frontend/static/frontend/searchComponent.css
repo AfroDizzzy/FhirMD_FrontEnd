@@ -1,7 +1,100 @@
+/* --- frontend/static/frontend/searchComponent.css --- */
+
+/* Styles for the global search form container in the header */
+.global-search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between input and button */
+    margin-left: auto; /* Pushes the search form to the right */
+    width: auto; /* Allow content to dictate width, or set max-width */
+    padding: 5px 0; /* Align with header padding */
+}
+
+/* UNIFIED STYLES for ALL text search input fields and select dropdowns */
+/* This will apply to:
+   1. The input in base.html header
+   2. The 'Filter by IG Name' and 'Filter by IG Version' selects in homepage.html's filter form
+*/
+.unified-search-input {
+    width: 250px; /* Example fixed width, adjust as needed */
+    max-width: 100%; /* Ensure responsiveness */
+    padding: 8px 12px;
+    border: 1px solid #ddd; /* Light grey border like your image */
+    border-radius: 5px; /* Slightly rounded corners */
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width calculation */
+    background-color: white;
+    color: #333;
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unified-search-input:focus {
+    border-color: #667eea; /* Highlight color on focus */
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2); /* Soft glow */
+}
+
+.unified-search-input::placeholder {
+    color: #888;
+}
+
+/* Specific styles for select dropdowns to ensure consistent appearance */
+.input-field select.unified-search-input {
+    /* Custom arrow for select (SVG data URI) - from your homepageStyle.css */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2C114.7L159.2%2C242.5c-4.4%2C4.4-10.8%2C6.7-17.6%2C6.7s-13.2-2.3-17.6-6.7L5.4%2C114.7c-7.3-7.3-7.3-19.3%2C0-26.7s19.3-7.3%2C26.7%2C0l126.6%2C126.6l126.6-126.6c7.3-7.3%2C19.3-7.3%2C26.7%2C0S294.3%2C107.4%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    padding-right: 30px; /* Space for the custom arrow */
+}
+
+
+/* UNIFIED STYLES for ALL search/apply buttons */
+.unified-search-button {
+    padding: 8px 15px; /* Default padding for buttons */
+    font-size: 0.95em;
+    background-color: #007bff; /* Default blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.unified-search-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Specific styling for the GLOBAL search button to make it transparent with just the icon */
+.global-search-form .unified-search-button { /* Target the button *within* the global search form */
+    background-color: transparent; /* Make background transparent */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove any shadow */
+    padding: 0px; /* Adjust padding to fit just the icon */
+    width: 30px; /* Give it a fixed width for the icon */
+    height: 30px; /* Give it a fixed height for the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global-search-form .unified-search-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+
+/* Specific styling for the search icon within the global search button */
 .search-icon {
-    width: 24px; /* Set your desired width (e.g., 24px, 30px, 1.5em) */
-    height: 24px; /* Set your desired height (should generally match width for icons) */
-    filter: invert(50%); /* Adjust icon color if needed */
-    /* You might also want to add: */
-    vertical-align: middle; /* Helps align the icon vertically with text/input */
+    width: 24px;
+    height: 24px;
+    filter: invert(100%); /* Make icon white for visibility against dark header */
+    vertical-align: middle;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    /* ... (existing media queries) ... */
 }
