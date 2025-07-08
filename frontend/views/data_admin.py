@@ -5,28 +5,43 @@ import zipfile
 import io
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
-# Removed: from django.contrib.auth.decorators import login_required, user_passes_test
-# Removed: from django.contrib.auth.models import Group
+# from django.contrib.auth.decorators import login_required, user_passes_test # Re-add these if you put auth back
+# from django.contrib.auth.models import Group # Re-add if you put auth back
 
 from ..models.readingFromJsonFile import (
     load_all_data,
     get_all_json_filenames_with_metadata_status,
-    json_files_directory
+    json_files_directory,
+    parse_ig_notation_string # NEW: Import the helper function (not used in this file directly, but useful for context)
 )
 
 # Define the expected metadata fields that can be edited/created
 METADATA_FIELDS = [
-    "Author", "IG", "IG_Version", "PHI_Check", "Valid_Reference_values",
-    "Placeholder1", "Placeholder2", "ResourceType"
+    "Author",
+    "IG_Notation", # NEW
+    "PHI_Check",
+    "Valid_Reference_values",
+    "ResourceType",
+    "Placeholder1",
+    "Placeholder2",
+    "Notes" # NEW
 ]
 
+# Create a list of tuples: (field_name_in_dict, display_name_for_label)
 DISPLAY_METADATA_FIELDS = [
     (field, field.replace('_', ' ')) for field in METADATA_FIELDS
 ]
 
-# Removed: is_data_admin helper function
 
-# Removed: @login_required and @user_passes_test decorators
+# Helper function for user access control (re-add if you put auth back)
+# def is_data_admin(user):
+#     if not user.is_authenticated:
+#         return False
+#     return user.is_superuser or user.groups.filter(name='Data Administrators').exists()
+
+
+# @login_required # Re-add if you put auth back
+# @user_passes_test(is_data_admin) # Re-add if you put auth back
 def data_admin_index(request):
     """
     Lists all JSON files and indicates if they have associated metadata.
@@ -35,12 +50,13 @@ def data_admin_index(request):
     context = {
         'json_files': json_files_info,
         'page_title': 'Test Data Admin',
-        'json_files_directory': json_files_directory # Pass the directory for display/info
+        'json_files_directory': json_files_directory
     }
     return render(request, 'frontend/data_admin/index.html', context)
 
 
-# Removed: @login_required and @user_passes_test decorators
+# @login_required # Re-add if you put auth back
+# @user_passes_test(is_data_admin) # Re-add if you put auth back
 def data_admin_edit_metadata(request, json_filename):
     """
     Displays a form to edit/create metadata for a specific JSON file.
@@ -68,6 +84,7 @@ def data_admin_edit_metadata(request, json_filename):
     if request.method == 'POST':
         new_metadata = {'filename': json_filename}
 
+        # Automatically populate ResourceType from the JSON file if available
         try:
             with open(json_file_path, 'r', encoding='utf-8') as f:
                 json_data = json.load(f)
@@ -75,12 +92,14 @@ def data_admin_edit_metadata(request, json_filename):
                     new_metadata['ResourceType'] = json_data['resourceType']
         except Exception as e:
             print(f"Could not read resourceType from {json_filename}: {e}")
+            # Fallback to form data if JSON read fails and it was manually entered
             manual_resource_type = request.POST.get('ResourceType', '').strip()
             if manual_resource_type:
                 new_metadata['ResourceType'] = manual_resource_type
 
 
         for field in METADATA_FIELDS:
+            # ResourceType is handled automatically from JSON, skip if already populated
             if field == 'ResourceType' and 'ResourceType' in new_metadata:
                 continue
 
@@ -93,7 +112,7 @@ def data_admin_edit_metadata(request, json_filename):
                 json.dump(new_metadata, f, indent=2)
             print(f"Metadata saved for {json_filename} to {md_file_path}")
 
-            load_all_data()
+            load_all_data() # Reload data to reflect changes in the main UI
 
             return redirect('data_admin_index')
         except Exception as e:
@@ -116,7 +135,8 @@ def data_admin_edit_metadata(request, json_filename):
     return render(request, 'frontend/data_admin/edit_metadata.html', context)
 
 
-# Removed: @login_required and @user_passes_test decorators
+# @login_required # Re-add if you put auth back
+# @user_passes_test(is_data_admin) # Re-add if you put auth back
 def export_metadata_zip(request):
     """
     Creates a zip file of all .md metadata files and serves it for download.

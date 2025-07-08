@@ -7,7 +7,6 @@
     <meta name="keywords"
           content="FHIR, Australia, healthcare, interoperability, HL7, medical data">
     <link rel="stylesheet" href="{% static 'frontend/baseStyle.css' %}" />
-    {# Include searchComponent.css (which holds global search bar styles now) #}
     <link rel="stylesheet" href="{% static 'frontend/searchComponent.css' %}" />
     <link rel="shortcut icon"
           type="image/png"
@@ -20,9 +19,20 @@
           <h1 class="homepage-text">FHIR Australia</h1>
         </a>
 
-        {# This is the crucial part for the GLOBAL SEARCH BAR #}
+        {# DIRECTLY EMBEDDED GLOBAL SEARCH BAR #}
         <form method="GET" action="{% url 'homepage' %}" class="global-search-form">
-          {% include 'frontend/global_search_bar.html' %}
+          <input
+            type="text"
+            name="search_terms"
+            id="global_search_text"
+            value="{{ request.GET.search_terms|default_if_none:'' }}"
+            placeholder="Search by resource or IG name..."
+            aria-label="Search by resource or IG name"
+            class="unified-search-input"
+          />
+          <button type="submit" class="unified-search-button" aria-label="Perform search">
+            <img src="{% static 'frontend/images/search-icon.png' %}" alt="Search" class="search-icon" />
+          </button>
         </form>
       </div>
     </header>

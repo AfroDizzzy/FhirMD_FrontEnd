@@ -7,8 +7,7 @@
       <h2>Sections</h2>
 
       <form method="GET" action="{% url 'homepage' %}" class="filter-form">
-        {# Hidden input to preserve existing search_terms if present from global search #}
-        {# This is for the case where a search is done via the top bar, then filters applied on homepage #}
+        {# Hidden input to preserve search_terms from global search when other filters are applied #}
         {% if request.GET.search_terms %}
           <input type="hidden" name="search_terms" value="{{ request.GET.search_terms }}" />
         {% endif %}
@@ -20,7 +19,7 @@
             value="Approved"
             name="approval"
             id="filter_status_app"
-            {% if approval == 'Approved' %}checked{% endif %} {# Use 'approval' from context #}
+            {% if approval == 'Approved' %}checked{% endif %}
           />
           <label for="filter_status_app">Approved</label>
 
@@ -59,15 +58,15 @@
             value="1"
             name="certification"
             id="filter_certification"
-            {% if certification == '1' %}checked{% endif %} {# Use 'certification' from context #}
+            {% if certification == '1' %}checked{% endif %}
           />
           <label for="filter_certification">Certification</label>
 
           <div class="input-field">
             <label for="filter_ig_name">Filter by IG Name:</label>
-            <select name="ig_name" id="filter_ig_name">
+            <select name="ig_name" id="filter_ig_name" class="unified-search-input">
               <option value="">All IGs</option>
-              {% for ig_name_option in all_unique_igs %} {# Renamed loop var to avoid clash #}
+              {% for ig_name_option in all_unique_igs %}
                 <option value="{{ ig_name_option }}" {% if ig_name_filter == ig_name_option %}selected{% endif %}>
                   {{ ig_name_option }}
                 </option>
@@ -77,21 +76,20 @@
 
           <div class="input-field">
             <label for="filter_ig_version">Filter by IG Version:</label>
-            <select name="ig_version" id="filter_ig_version">
+            <select name="ig_version" id="filter_ig_version" class="unified-search-input">
               <option value="">All Versions</option>
               {# Options will be populated by JavaScript #}
             </select>
           </div>
         </fieldset>
 
-        <button type="submit" class="apply-filters-button">Apply Filters</button>
+        <button type="submit" class="apply-filters-button unified-search-button">Apply Filters</button>
         <a href="{% url 'homepage' %}" class="clear-filters-button">Clear Filters</a>
       </form>
 
       <ul class="item-list">
         {% for item in items %}
           <li class="item">
-            {# MODIFIED LINK: Pass current filter parameters to sectionDetails URL #}
             <a class="item-link" href="{% url 'sectionDetails' section_name=item %}?search_terms={{ search_terms|urlencode }}&approval={{ approval|urlencode }}&certification={{ certification|urlencode }}&ig_name={{ ig_name_filter|urlencode }}&ig_version={{ ig_version_filter|urlencode }}">
               <h3 class="item-resourceType">{{ item }}</h3>
             </a>
@@ -130,12 +128,13 @@
             const selectedIgName = igNameSelect.value;
             igVersionSelect.innerHTML = '<option value="">All Versions</option>';
 
-            if (selectedIgName && igsWithVersions[selectedIgName]) {
-                igsWithVersions[selectedIgName].forEach(version => {
+            if (selectedIgName && igsWithVersions && igsWithVersions.hasOwnProperty(selectedIgName)) {
+                // Use bracket notation to safely access property by string key
+                igsWithVersions['' + selectedIgName].forEach(version => {
                     const option = document.createElement('option');
                     option.value = version;
                     option.textContent = version;
-                    if (version === currentIgVersion && selectedIgName === currentIgName) { // Ensure version matches selected IG
+                    if (version === currentIgVersion && selectedIgName === currentIgName) {
                         option.selected = true;
                     }
                     igVersionSelect.appendChild(option);
@@ -149,5 +148,4 @@
         populateIgVersions();
     });
   </script>
-
 {% endblock content %}

@@ -1,5 +1,6 @@
 {% extends "frontend/base.html" %}
 {% load static %}
+{% load custom_filters %} {# Ensure custom_filters is loaded for get_item #}
 {% block content %}
   <link rel="stylesheet"
         href="{% static 'frontend/sectionDetailsStyle.css' %}" />
@@ -7,7 +8,7 @@
     <section class="content-section">
       <h2>Section Name: {{ sectionName }}</h2>
 
-      {# NEW: Display Current Filters #}
+      {# Display Current Filters #}
       <div class="current-filters">
         <h3>Applied Filters:</h3>
         <ul>
@@ -22,7 +23,6 @@
         </ul>
         <a href="{% url 'homepage' %}?search_terms={{ search_terms|urlencode }}&approval={{ approval_filter|urlencode }}&certification={{ certification_filter|urlencode }}&ig_name={{ ig_name_filter|urlencode }}&ig_version={{ ig_version_filter|urlencode }}" class="back-to-homepage-filters">Back to Homepage Filters</a>
       </div>
-      {# END NEW: Display Current Filters #}
 
       <ul class="item-list">
         {% for item in items %}
@@ -36,12 +36,27 @@
                 <div class="item-metadata">
                   <h4>Metadata:</h4>
                   {% if item.file_metadata.Author %}<p><strong>Author:</strong> {{ item.file_metadata.Author }}</p>{% endif %}
-                  {% if item.file_metadata.IG %}<p><strong>IG:</strong> {{ item.file_metadata.IG }}</p>{% endif %}
-                  {% if item.file_metadata.IG_Version %}<p><strong>IG Version:</strong> {{ item.file_metadata.IG_Version }}</p>{% endif %}
+
+                  {# NEW: Display Multiple IG Notations #}
+                  {% if item.file_metadata.Parsed_IG_Notations %}
+                    <p><strong>Implementation Guides:</strong></p>
+                    <ul>
+                      {% for ig in item.file_metadata.Parsed_IG_Notations %}
+                        <li>{{ ig.name }}{% if ig.version %}:{{ ig.version }}{% endif %}</li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    {# Fallback to old IG/IG_Version if Parsed_IG_Notations is not present (for transition period) #}
+                    {% if item.file_metadata.IG %}<p><strong>IG:</strong> {{ item.file_metadata.IG }}</p>{% endif %}
+                    {% if item.file_metadata.IG_Version %}<p><strong>IG Version:</strong> {{ item.file_metadata.IG_Version }}</p>{% endif %}
+                  {% endif %}
+
                   {% if item.file_metadata.PHI_Check %}<p><strong>PHI Check:</strong> {{ item.file_metadata.PHI_Check }}</p>{% endif %}
                   {% if item.file_metadata.Valid_Reference_values %}<p><strong>Valid Reference values:</strong> {{ item.file_metadata.Valid_Reference_values }}</p>{% endif %}
                   {% if item.file_metadata.Placeholder1 %}<p><strong>Placeholder1:</strong> {{ item.file_metadata.Placeholder1 }}</p>{% endif %}
                   {% if item.file_metadata.Placeholder2 %}<p><strong>Placeholder2:</strong> {{ item.file_metadata.Placeholder2 }}</p>{% endif %}
+                  {# NEW: Display Notes #}
+                  {% if item.file_metadata.Notes %}<p><strong>Notes:</strong> {{ item.file_metadata.Notes }}</p>{% endif %}
                 </div>
               {% endif %}
             </a>
