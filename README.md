@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ## Running application locally
 
 Build and run with Docker
-bashdocker-compose up --build
+docker-compose up --build
 
 OR
 
