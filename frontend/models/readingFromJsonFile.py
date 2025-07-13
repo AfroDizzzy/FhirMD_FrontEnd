@@ -13,27 +13,24 @@ json_files_directory = './test_data'
 
 # Helper to parse IG_Notation string
 def parse_ig_notation_string(ig_notation_str):
+    parsed_igs = []
+    
+    if not isinstance(ig_notation_str, str):
+        return parsed_igs
     """
     Parses a comma-separated IG notation string (e.g., "name:version,name2:version2")
     into a list of dictionaries [{'name': '...', 'version': '...'}].
     """
-    parsed_igs = []
-    if isinstance(ig_notation_str, str):
-        entries = [entry.strip() for entry in ig_notation_str.split(',') if entry.strip()]
-        for entry in entries:
-            parts = entry.split(':', 1) # Split only on the first colon
-            ig_name = parts[0].strip()
-            ig_version = parts[1].strip() if len(parts) > 1 else ""
-            parsed_igs.append({'name': ig_name, 'version': ig_version})
+    entries = [entry.strip() for entry in ig_notation_str.split(',') if entry.strip()]
+    for entry in entries:
+        parts = entry.split(':', 1) # Split only on the first colon
+        ig_name = parts[0].strip()
+        ig_version = parts[1].strip() if len(parts) > 1 else ""
+        parsed_igs.append({'name': ig_name, 'version': ig_version})
     return parsed_igs
 
 # Function to load/reload all data
 def load_all_data():
-    global SAMPLE_ITEMS, sections, LIST_OF_SECTIONS
-    SAMPLE_ITEMS = [] # Clear existing data
-    sections = set() # Clear existing sections
-    LIST_OF_SECTIONS = []
-
     print(f"Loading data from: {os.path.abspath(json_files_directory)}")
 
     temp_items_by_filename = {}
