@@ -15,23 +15,25 @@
   <body id="content">
     <header class="global-header">
       <div class="header-content-wrapper">
-        <a class="homepage-link" href="{% url 'homepage' %}">
+        <a class="homepage-link" href="{% url 'index' %}">
           <h1 class="homepage-text">FHIR Australia</h1>
+          <h5 class="homepage-text">Fast Healthcare Interoperability Resources</h5>
         </a>
-
         {# DIRECTLY EMBEDDED GLOBAL SEARCH BAR #}
         <form method="GET" action="{% url 'homepage' %}" class="global-search-form">
-          <input
-            type="text"
-            name="search_terms"
-            id="global_search_text"
-            value="{{ request.GET.search_terms|default_if_none:'' }}"
-            placeholder="Search by resource or IG name..."
-            aria-label="Search by resource or IG name"
-            class="unified-search-input"
-          />
-          <button type="submit" class="unified-search-button" aria-label="Perform search">
-            <img src="{% static 'frontend/images/search-icon.png' %}" alt="Search" class="search-icon" />
+          <input type="text"
+                 name="search_terms"
+                 id="global_search_text"
+                 value="{{ request.GET.search_terms|default_if_none:'' }}"
+                 placeholder="Search by resource or IG name..."
+                 aria-label="Search by resource or IG name"
+                 class="unified-search-input" />
+          <button type="submit"
+                  class="unified-search-button"
+                  aria-label="Perform search">
+            <img src="{% static 'frontend/images/search-icon.png' %}"
+                 alt="Search"
+                 class="search-icon" />
           </button>
         </form>
       </div>
