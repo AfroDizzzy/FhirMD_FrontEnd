@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="{% static 'frontend/sectionsStyle.css' %}" />
   <main>
     <div class="content-section">
+      <a href="javascript:window.history.back();">Back</a>
       <h2>Sections</h2>
       <form method="GET" action="{% url 'homepage' %}" class="filter-form">
         {# Hidden input to preserve search_terms from global search when other filters are applied #}

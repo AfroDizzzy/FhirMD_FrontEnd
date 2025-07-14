@@ -1,37 +1,33 @@
 {% extends "frontend/base.html" %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'frontend/jsonDetailStyle.css' %}" />
-
-{# Highlight.js CSS for a dark theme #}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-
-<main>
-  <section class="content-section">
-    <h2>Full JSON for {{ resource_type }} (ID: {{ item_id }})</h2>
-
-    <div class="json-actions">
-      <button id="downloadJson" class="download-button">Download JSON</button>
-    </div>
-
-    {# The <pre><code> block for highlighted JSON #}
-    <pre class="json-display"><code class="language-json">{{ pretty_json }}</code></pre>
-
-    <a href="javascript:history.back()" class="back-link">Back to Section Details</a>
-  </section>
-</main>
-
-{# Highlight.js library #}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-{# Initialize Highlight.js after the content is loaded #}
-<script>
+  <link rel="stylesheet" href="{% static 'frontend/jsonDetailStyle.css' %}" />
+  {# Highlight.js CSS for a dark theme #}
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <main>
+    <section class="content-section">
+      <h2>{{ resource_type }}</h2>
+      <h3>{{ item_id }}</h3>
+      <div class="json-actions">
+        <button onclick="javascript:history.back()" class="back-link">Back to Section Details</button>
+        <button id="downloadJson" class="download-button">Download JSON</button>
+      </div>
+      {# The <pre><code> block for highlighted JSON #}
+      <pre class="json-display"><code class="language-json">{{ pretty_json }}</code></pre>
+      <a href="javascript:history.back()" class="back-link">Back to Section Details</a>
+    </section>
+  </main>
+  {# Highlight.js library #}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  {# Initialize Highlight.js after the content is loaded #}
+  <script>
   document.addEventListener('DOMContentLoaded', (event) => {
     hljs.highlightAll();
   });
-</script>
-
-{# JavaScript for download button #}
-<script>
+  </script>
+  {# JavaScript for download button #}
+  <script>
   document.getElementById('downloadJson').addEventListener('click', function() {
     const jsonData = `{{ pretty_json|escapejs }}`; // Use escapejs to handle quotes correctly
     const blob = new Blob([jsonData], { type: 'application/json' });
@@ -44,6 +40,5 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url); // Clean up the URL object
   });
-</script>
-
+  </script>
 {% endblock content %}
