@@ -7,8 +7,8 @@
         href="{% static 'frontend/sectionDetailsStyle.css' %}" />
   <main>
     <section class="content-section">
-      <div>
-        <button type="button" onclick="window.history.back();">Back</button>
+      <div class="section-details-heading-div">
+        <button type="button" onclick="window.history.back();" class="back-link">Back</button>
         <h2>Section Name: {{ sectionName }}</h2>
       </div>
       {# Display Current Filters #}

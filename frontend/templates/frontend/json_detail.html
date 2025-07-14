@@ -9,13 +9,13 @@
     <section class="content-section">
       <h2>{{ resource_type }}</h2>
       <h3>{{ item_id }}</h3>
-      <div class="json-actions">
+      <div class="json-details-heading-div">
         <button onclick="javascript:history.back()" class="back-link">Back to Section Details</button>
         <button id="downloadJson" class="download-button">Download JSON</button>
       </div>
       {# The <pre><code> block for highlighted JSON #}
       <pre class="json-display"><code class="language-json">{{ pretty_json }}</code></pre>
-      <a href="javascript:history.back()" class="back-link">Back to Section Details</a>
+      <button onclick="javascript:history.back()" class="back-link">Back to Section Details</button>
     </section>
   </main>
   {# Highlight.js library #}
