@@ -4,7 +4,9 @@
   <link rel="stylesheet" href="{% static 'frontend/sectionsStyle.css' %}" />
   <main>
     <div class="content-section">
-      <a href="javascript:window.history.back();">Back</a>
+      <button type="button" onclick="window.history.back();">
+        <i class="back-nav-icon"></i>
+      </button>
       <h2>Sections</h2>
       {% include "frontend/filterComponent.html" %}
       <ul class="item-list">

@@ -23,14 +23,25 @@ main {
   margin: 0 auto;
   padding: 2rem; /* Adjusted from 20px to 2rem */
   width: 100%;
-  background-color: #fff; /* Explicitly set for main content areas */
-  border-radius: 10px; /* From your new base CSS */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* From your new base CSS */
 }
 
+.back-nav-icon {
+  background: url("images/back.png");
+  background-repeat: no-repeat;
+  background-size: cover; /* stretch the background to cover the whole element */
+
+  /* 
+       still inline, but has block features
+       meaning height and width can be set
+    */
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
 .content-section h2 {
   color: #667eea; /* Color for headings */
   margin-bottom: 1.5rem;
+  font-weight: bold;
   font-size: 1.8rem;
 }
 
@@ -46,7 +57,7 @@ main {
 }
 
 .item {
-  background: #f8f9ff;
+  background: white;
   border: 1px solid #e1e5f7;
   border-radius: 8px;
   margin-bottom: 1rem; /* Adjusted from 1rem to 1rem, consistent */

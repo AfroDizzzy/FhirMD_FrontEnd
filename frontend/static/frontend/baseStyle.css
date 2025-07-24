@@ -16,13 +16,12 @@ body {
   background-color: #f4f7f6; /* A light background color for the page */
 }
 
-/* GLOBAL HEADER STYLES - ADDED/CORRECTED */
+/* --- Global Header & Search Bar Styles (from previous baseStyle.css and searchComponent.css) --- */
+/* These should ideally go into baseStyle.css, but if you want *all* homepage related CSS here, it's fine.
+   Just be careful about duplication if base.html also loads these. */
+
 .global-header {
-  background: linear-gradient(
-    to right,
-    #e07c02,
-    #f68672
-  ); /* Bright Orange to LightSalmon fade */
+  background: linear-gradient(to right, #e07c02, #f68672);
   color: white;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -41,21 +40,66 @@ body {
   margin: 0 auto;
 }
 
-.homepage-link h1 {
+.homepage-link {
   text-decoration: none;
   color: inherit;
   margin-right: 20px;
   transition: text-shadow 0.2s ease, box-shadow 0.2s ease;
 }
-
 .homepage-link h1:hover {
   text-shadow: #667eea 1px 1px 5px;
 }
-
 .homepage-text {
   margin: 0;
   font-size: 1.8em;
   white-space: nowrap;
+}
+
+.global-search-form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  padding: 5px 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar-container input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 1em;
+  flex-grow: 1;
+  min-width: 150px;
+}
+
+.search-bar-container input[type="text"]::placeholder {
+  color: #888;
+}
+
+.search-button-global {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(50%);
 }
 
 /* Main Content Area Styling (Applies to all pages that extend base.html) */
@@ -65,8 +109,6 @@ main {
   margin: 0 auto;
   padding: 2rem;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-top: 20px; /* Space from header */
   margin-bottom: 20px; /* Space before footer */
 }
