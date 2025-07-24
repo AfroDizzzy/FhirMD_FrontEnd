@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 
 def homepage(request):
-    return HttpResponse("Home Page")
-
+    context = {"latest_question_list": False}
+    return render(request, "frontend/homePage.html", context)

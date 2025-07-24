@@ -15,9 +15,9 @@
   <body id="content">
     <header class="global-header">
       <div class="header-content-wrapper">
-        <a class="homepage-link" href="{% url 'index' %}">
+        <a class="homepage-link" href="{% url 'homepage' %}">
           <h1 class="homepage-text">FHIR Australia</h1>
-          <h5 class="homepage-text">Fast Healthcare Interoperability Resources</h5>
+          <h5 class="homepage-text-under">Fast Healthcare Interoperability Resources</h5>
         </a>
         {# DIRECTLY EMBEDDED GLOBAL SEARCH BAR #}
         <form method="GET" action="{% url 'sections' %}" class="global-search-form">
@@ -44,7 +44,7 @@
   <footer>
     <div class="footer-content">
       <div class="footer-links">
-        <a href="{% url 'index' %}">About</a>
+        <a href="{% url 'homepage' %}">About</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Contact</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms</a>
