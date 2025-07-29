@@ -155,27 +155,6 @@ footer {
   flex-wrap: wrap;
 }
 
-.header-content-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.homepage-link {
-  text-decoration: none;
-  color: inherit;
-  margin-right: 20px;
-}
-
-.homepage-text {
-  margin: 0;
-  font-size: 1.8em;
-  white-space: nowrap;
-}
-
 .global-search-form {
   display: flex;
   align-items: center;
@@ -331,16 +310,6 @@ footer {
 
 /* Media queries from previous styles, combined with your new base's media queries */
 @media (max-width: 768px) {
-  .global-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-  .header-content-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
   .global-search-form {
     width: 100%;
     margin-left: 0;
@@ -349,10 +318,7 @@ footer {
   .search-bar-container {
     width: 100%;
   }
-  /* Adjusted from your new base CSS */
-  main {
-    padding: 1rem;
-  }
+
   .content-section {
     padding: 1.5rem;
   }
