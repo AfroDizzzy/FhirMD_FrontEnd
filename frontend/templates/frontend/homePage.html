@@ -6,19 +6,26 @@
   <main>
     <div class="content-section">
       <h2>FHIR Resources and Information</h2>
-      {% for page_key, page_data in pages.items %}
+      <ul class="home-page-list">
         <li class="item">
-          <a class="item-link" href="{% url page_key %}">
-            <h3 class="item-resourceType">{{ page_data.name }}</h3>
-            <p>{{ page_data.description }}</p>
+          <a class="item-link" href="{% url 'sections' %}">
+            <h3 class="item-resourceType">Sections</h3>
+            <p>Description for Sections</p>
           </a>
         </li>
-      {% empty %}
         <li class="item">
-          <div class="item-name">ERROR: Pages Found</div>
-          <div class="item-description">Pages failed to load</div>
+          <a class="item-link" href="{% url 'sections' %}">
+            <h3 class="item-resourceType">Resource Type</h3>
+            <p>Description for Type</p>
+          </a>
         </li>
-      {% endfor %}
+        <li class="item">
+          <a class="item-link" href="{% url 'sections' %}">
+            <h3 class="item-resourceType">Resource Type</h3>
+            <p>Description for Type</p>
+          </a>
+        </li>
+      </ul>
     </div>
   </main>
 {% endblock content %}
