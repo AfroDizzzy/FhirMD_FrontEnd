@@ -100,36 +100,6 @@ main {
   font-size: 0.95rem;
 }
 
-/* Footer styles (from your new base CSS) */
-footer {
-  background: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 2rem 0;
-  margin-top: auto;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.footer-links {
-  margin-bottom: 1rem;
-}
-
-.footer-links a {
-  color: #ecf0f1;
-  text-decoration: none;
-  margin: 0 1rem;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #667eea;
-}
-
 @media (max-width: 768px) {
   /* .header-content h1 { font-size: 2rem; } - This should be in baseStyle.css */
   main {
@@ -138,51 +108,6 @@ footer {
   .content-section {
     padding: 1.5rem;
   }
-}
-
-/* --- Global Header & Search Bar Styles (from previous baseStyle.css and searchComponent.css) --- */
-/* These should ideally go into baseStyle.css, but if you want *all* homepage related CSS here, it's fine.
-   Just be careful about duplication if base.html also loads these. */
-
-.global-header {
-  background-color: #6a5acd; /* A nice purple */
-  color: white;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.global-search-form {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-left: auto;
-}
-
-.search-bar-container {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  background-color: white;
-  padding: 5px 10px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar-container input[type="text"] {
-  border: none;
-  outline: none;
-  padding: 5px;
-  font-size: 1em;
-  flex-grow: 1;
-  min-width: 150px;
-}
-
-.search-bar-container input[type="text"]::placeholder {
-  color: #888;
 }
 
 .search-button-global {
