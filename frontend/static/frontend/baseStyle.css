@@ -44,10 +44,10 @@ body {
   text-decoration: none;
   color: inherit;
   margin-right: 20px;
-  transition: text-shadow 0.2s ease, box-shadow 0.2s ease;
+  transition: var(--transition-smooth-text);
 }
 .homepage-link h1:hover {
-  text-shadow: #667eea 1px 1px 5px;
+  text-shadow: var(--text-colour-primary-hover-shadow);
 }
 .homepage-text {
   margin: 0;
@@ -67,7 +67,7 @@ body {
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 20px;
-  background-color: white;
+  background-color: var(--background-colour);
   padding: 5px 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -131,11 +131,11 @@ main {
 }
 
 .item {
-  background: #f8f9ff;
+  background: var(--background-colour);
   border: 1px solid #e1e5f7;
   border-radius: 8px;
   margin-bottom: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: var(--transition-smooth);
   overflow: hidden;
 }
 

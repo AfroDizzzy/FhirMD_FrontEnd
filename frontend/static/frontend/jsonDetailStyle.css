@@ -25,19 +25,19 @@ main {
 }
 
 .download-button {
-  background-color: #28a745; /* Green color for download */
+  background-color: var(--green); /* Green color for download */
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
-  transition: background-color 0.2s ease;
+  transition: var(--transition-background-colour);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .download-button:hover {
-  background-color: #218838;
+  background-color: var(--green-hover);
 }
 
 .json-display {
