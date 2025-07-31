@@ -14,14 +14,6 @@ body {
   background-color: var(--background-colour-page);
 }
 
-main {
-  flex: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  width: 100%;
-}
-
 .sections-page-header {
   display: flex;
   flex-direction: row;
