@@ -4,10 +4,12 @@
   <link rel="stylesheet" href="{% static 'frontend/sectionsStyle.css' %}" />
   <main>
     <div class="content-section">
-      <button type="button" onclick="window.history.back();">
-        <i class="back-nav-icon"></i>
-      </button>
-      <h2>Sections</h2>
+      <div class="sections-page-header fixed-element-top">
+        <button type="button" onclick="window.history.back();" class="back-button">
+          <i class="back-nav-icon"></i>
+        </button>
+        <h2 class="sections-page-header-text">Sections</h2>
+      </div>
       {% include "frontend/filterComponent.html" %}
       <ul class="item-list">
         {% for item in items %}

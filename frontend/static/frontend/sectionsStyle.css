@@ -11,56 +11,63 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f4f7f6; /* Inherited from previous baseStyle, often good for body */
+  background-color: var(--background-colour-page);
 }
 
-/* These main and content-section styles might overlap with homepageStyle's main,
-   but since homepage.html extends base.html and then links homepageStyle,
-   homepageStyle's versions will take precedence if defined later or specifically. */
 main {
   flex: 1;
-  max-width: 1200px; /* Adjusted from 900px to 1200px from your new base CSS */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem; /* Adjusted from 20px to 2rem */
+  padding: 2rem;
   width: 100%;
+}
+
+.sections-page-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.back-button {
+  border-width: 0;
+  background-color: var(--background-color);
+  margin-right: auto;
+  cursor: pointer;
+}
+.back-nav-icon :hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sections-page-header-text {
+  flex: 1;
+  text-align: center;
+  align-items: center;
 }
 
 .back-nav-icon {
   background: url("images/back.png");
   background-repeat: no-repeat;
-  background-size: cover; /* stretch the background to cover the whole element */
-
-  /* 
-       still inline, but has block features
-       meaning height and width can be set
-    */
+  background-size: cover;
   display: inline-block;
-  height: 20px;
-  width: 20px;
-}
-.content-section h2 {
-  color: #667eea; /* Color for headings */
-  margin-bottom: 1.5rem;
-  font-weight: bold;
-  font-size: 1.8rem;
+  height: 40px;
+  width: 40px;
 }
 
 .item-list {
   list-style: none;
   padding: 0;
-  display: grid; /* From previous homepageStyle */
-  gap: 1rem; /* Adjusted from 15px to 1rem */
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(280px, 1fr)
-  ); /* Responsive grid */
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .item {
   background: white;
   border: 1px solid #e1e5f7;
   border-radius: 8px;
-  margin-bottom: 1rem; /* Adjusted from 1rem to 1rem, consistent */
+  margin-bottom: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
 }
@@ -79,7 +86,7 @@ main {
 }
 
 .item-link:hover {
-  text-decoration: none; /* Keep text decoration off on hover */
+  text-decoration: none;
 }
 
 .item-id {

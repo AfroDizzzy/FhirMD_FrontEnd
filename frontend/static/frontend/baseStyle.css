@@ -103,26 +103,23 @@ body {
   filter: invert(50%);
 }
 
-/* Main Content Area Styling (Applies to all pages that extend base.html) */
 main {
-  flex: 1; /* Allows main content to grow and push footer down */
+  flex: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   width: 100%;
-  margin-top: 20px; /* Space from header */
-  margin-bottom: 20px; /* Space before footer */
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .content-section h2 {
   text-align: center;
-  margin-bottom: 3rem;
   font-size: 2.5rem;
-  color: #333;
-  font-weight: 300;
+  color: var(--text-colour-primary);
+  font-weight: bold;
 }
 
-/* Item List Styles (for common list displays like sections or section details) */
 .item-list {
   list-style: none;
   padding: 0;
@@ -174,7 +171,6 @@ main {
   font-size: 0.95rem;
 }
 
-/* Footer styles */
 footer {
   background: #2c3e50;
   color: white;
@@ -202,6 +198,14 @@ footer {
 
 .footer-links a:hover {
   color: #667eea;
+}
+
+.fixed-element-top {
+  position: var(--fixed-position);
+  top: var(--fixed-top);
+  left: var(--fixed-left);
+  z-index: var(--fixed-z-index);
+  background-color: var(--background-colour-page);
 }
 
 /* Media queries for overall responsiveness */

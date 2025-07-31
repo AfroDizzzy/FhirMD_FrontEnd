@@ -2,6 +2,7 @@
   --primary-color: #3b82f6;
   --secondary-colour: #64748b;
   --background-colour: #ffffff;
+  --background-colour-page: #f4f7f6;
   --text-colour-white: #ffffff;
   --text-colour-primary: #667eea;
   --text-colour-primary-hover: ;
@@ -19,4 +20,9 @@
   --transition-smooth-text: text-shadow 0.2s ease, box-shadow 0.2s ease;
   --transition-background-colour: var(--background-colour) 0.2s ease;
   --transition-green-button: ;
+
+  --fixed-position: sticky;
+  --fixed-top: 0;
+  --fixed-left: 0;
+  --fixed-z-index: 1000;
 }

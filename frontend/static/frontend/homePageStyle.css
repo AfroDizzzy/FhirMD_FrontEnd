@@ -1,19 +1,16 @@
 .item-list {
   list-style: none;
   padding: 0;
-  display: grid; /* From previous homepageStyle */
-  gap: 1rem; /* Adjusted from 15px to 1rem */
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(280px, 1fr)
-  ); /* Responsive grid */
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .item {
   background: var(--background-colour);
   border: 1px solid #e1e5f7;
   border-radius: 8px;
-  margin-bottom: 1rem; /* Adjusted from 1rem to 1rem, consistent */
+  margin-bottom: 1rem;
   transition: var(--transition-smooth);
   overflow: hidden;
 }
@@ -32,5 +29,5 @@
 }
 
 .item-link:hover {
-  text-decoration: none; /* Keep text decoration off on hover */
+  text-decoration: none;
 }
