@@ -47,53 +47,6 @@ body {
   width: 40px;
 }
 
-.item-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
-
-.item {
-  background: white;
-  border: 1px solid #e1e5f7;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  overflow: hidden;
-}
-
-.item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border-color: #667eea;
-}
-
-.item-link {
-  display: block;
-  padding: 1.2rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.item-link:hover {
-  text-decoration: none;
-}
-
-.item-id {
-  color: #668eea;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.item-resourceType {
-  font-weight: bold;
-  color: #667eea;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
 .item-description {
   color: #666;
   font-size: 0.95rem;
