@@ -18,6 +18,7 @@ def json_detail(request, item_id):
         pretty_json = json.dumps(found_item, indent=4)
         context = {
             'item_id': item_id,
+            'DisplayName': item_id.replace('-', ' ').replace('_', ' ').title(),
             'pretty_json': pretty_json,
             'resource_type': found_item.get('resourceType', 'N/A')
         }

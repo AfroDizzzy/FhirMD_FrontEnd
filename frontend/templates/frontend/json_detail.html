@@ -7,15 +7,17 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   <main>
     <section class="content-section">
-      <h2>{{ resource_type }}</h2>
-      <h3>{{ item_id }}</h3>
-      <div class="json-details-heading-div">
-        <button onclick="javascript:history.back()" class="back-link">Back to Section Details</button>
-        <button id="downloadJson" class="download-button">Download JSON</button>
+      <div class="sections-details-page-header fixed-element-top">
+        <button type="button" onclick="window.history.back();" class="back-button">
+          <i class="back-nav-icon"></i>
+        </button>
+        <h2 class="sections-details-page-header-text">{{ resource_type }} - {{ DisplayName }}</h2>
+        <div class="json-details-heading-div">
+          <button id="downloadJson" class="download-button">Download JSON</button>
+        </div>
       </div>
       {# The <pre><code> block for highlighted JSON #}
       <pre class="json-display"><code class="language-json">{{ pretty_json }}</code></pre>
-      <button onclick="javascript:history.back()" class="back-link">Back to Section Details</button>
     </section>
   </main>
   {# Highlight.js library #}
