@@ -7,9 +7,11 @@
         href="{% static 'frontend/sectionDetailsStyle.css' %}" />
   <main>
     <section class="content-section">
-      <div class="section-details-heading-div fixed-element-top">
-        <button type="button" onclick="window.history.back();" class="back-link">Back</button>
-        <h2>Section Name: {{ sectionName }}</h2>
+      <div class="sections-details-page-header fixed-element-top">
+        <button type="button" onclick="window.history.back();" class="back-button">
+          <i class="back-nav-icon"></i>
+        </button>
+        <h2 class="sections-details-page-header-text">{{ sectionName }}</h2>
       </div>
       {# Display Current Filters #}
       <div class="current-filters">
@@ -45,16 +47,14 @@
           {% endif %}
         </ul>
         {% comment %} <a href="{% url 'sections' %}?search_terms={{ search_terms|urlencode }}&approval={{ approval_filter|urlencode }}&certification={{ certification_filter|urlencode }}&ig_name={{ ig_name_filter|urlencode }}&ig_version={{ ig_version_filter|urlencode }}" class="back-to-sections-filters">Back to Sections Filters</a> {% endcomment %}
-        <a href="javascript:window.history.back();">Back</a>
       </div>
       <ul class="item-list">
         {% for item in items %}
           <li class="item">
-            <a class="item-link" href="{% url 'json_detail' item_id=item.id %}">
-              <div class="item-id">ID: {{ item.id }}</div>
-              <div class="item-resourceType">Type: {{ item.resourceType }}</div>
+            <a class="item-link" href="{% url 'json_detail' item.id %}">
+              <div class="item-display-name">{{ item.DisplayName }}</div>
               {# Display Metadata #}
-              {% if item.file_metadata %}
+              {% comment %} {% if item.file_metadata %}
                 <div class="item-metadata">
                   <h4>Metadata:</h4>
                   {% if item.file_metadata.Author %}
@@ -95,7 +95,7 @@
                   {% endif %}
                   {% if item.file_metadata.Valid_Reference_values %}
                     <p>
-                      <strong>Valid Reference values:</strong> {{ item.file_metadata.Valid_Reference_values }}
+                      <strong>Valid Reference Values:</strong> {{ item.file_metadata.Valid_Reference_values }}
                     </p>
                   {% endif %}
                   {% if item.file_metadata.Placeholder1 %}
@@ -115,7 +115,7 @@
                     </p>
                   {% endif %}
                 </div>
-              {% endif %}
+              {% endif %} {% endcomment %}
             </a>
           </li>
         {% empty %}
