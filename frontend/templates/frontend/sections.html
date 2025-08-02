@@ -1,0 +1,64 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'frontend/sectionsStyle.css' %}" />
+  <main>
+    <div class="content-section">
+      <div class="sections-page-header fixed-element-top">
+        <button type="button" onclick="window.history.back();" class="back-button">
+          <i class="back-nav-icon"></i>
+        </button>
+        <h2 class="sections-page-header-text">Sections</h2>
+      </div>
+      {% include "frontend/filterComponent.html" %}
+      <ul class="item-list">
+        {% for item in items %}
+          <li class="item">
+            <a class="item-link"
+               href="{% url 'sectionDetails' section_name=item %}?search_terms={{ search_terms|urlencode }}&approval={{ approval|urlencode }}&certification={{ certification|urlencode }}&ig_name={{ ig_name_filter|urlencode }}&ig_version={{ ig_version_filter|urlencode }}">
+              <h3 class="item-resourceType">{{ item }}</h3>
+            </a>
+          </li>
+        {% empty %}
+          <li class="item">
+            <div class="item-name">No sections found</div>
+            <div class="item-description">There are currently no sections to display matching your criteria.</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const igsWithVersions = JSON.parse('{{ igs_with_versions|escapejs }}');
+        const igNameSelect = document.getElementById('filter_ig_name');
+        const igVersionSelect = document.getElementById('filter_ig_version');
+
+        const currentIgName = '{{ ig_name_filter|escapejs }}';
+        const currentIgVersion = '{{ ig_version_filter|escapejs }}';
+
+        function populateIgVersions() {
+            const selectedIgName = igNameSelect.value;
+            igVersionSelect.innerHTML = '<option value="">All Versions</option>';
+
+            if (selectedIgName && igsWithVersions && igsWithVersions.hasOwnProperty(selectedIgName)) {
+                // Use bracket notation to safely access property by string key
+                igsWithVersions['' + selectedIgName].forEach(version => {
+                    const option = document.createElement('option');
+                    option.value = version;
+                    option.textContent = version;
+                    if (version === currentIgVersion && selectedIgName === currentIgName) {
+                        option.selected = true;
+                    }
+                    igVersionSelect.appendChild(option);
+                });
+            }
+            igVersionSelect.disabled = !selectedIgName;
+        }
+
+        igNameSelect.addEventListener('change', populateIgVersions);
+
+        populateIgVersions();
+    });
+  </script>
+{% endblock content %}

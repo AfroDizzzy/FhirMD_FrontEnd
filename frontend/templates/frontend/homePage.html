@@ -1,0 +1,31 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block content %}
+  {# Removed the header content that displayed "Welcome to Django" #}
+  <link rel="stylesheet" href="{% static 'frontend/homePageStyle.css' %}" />
+  <main>
+    <div class="content-section">
+      <h2>FHIR Resources and Information</h2>
+      <ul class="home-page-list">
+        <li class="item">
+          <a class="item-link" href="{% url 'sections' %}">
+            <h3 class="item-resourceType">Sections</h3>
+            <p>Description for Sections</p>
+          </a>
+        </li>
+        <li class="item">
+          <a class="item-link" href="{% url 'sections' %}">
+            <h3 class="item-resourceType">Resource Type</h3>
+            <p>Description for Type</p>
+          </a>
+        </li>
+        <li class="item">
+          <a class="item-link" href="{% url 'sections' %}">
+            <h3 class="item-resourceType">Resource Type</h3>
+            <p>Description for Type</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+{% endblock content %}

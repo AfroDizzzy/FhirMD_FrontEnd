@@ -1,14 +1,13 @@
 from django.urls import path
-from .views.index import index
+from .views.jsonDetail import json_detail
 from .views.homepage import homepage
-from .views.sections import sections as simple_sections_view
-from .views.sectionDetails import sectionDetails, json_detail
+from .views.sections import sections    
+from .views.sectionDetails import sectionDetails
 from .views import data_admin # Import the data_admin views
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("homepage/", homepage, name="homepage"),
-    path("sections/", simple_sections_view, name="sections_placeholder"),
+    path("", homepage, name="homepage"),
+    path("sections/", sections, name="sections"),
     path("sections/<str:section_name>/", sectionDetails, name="sectionDetails"),
     path("json_detail/<str:item_id>/", json_detail, name="json_detail"),
 

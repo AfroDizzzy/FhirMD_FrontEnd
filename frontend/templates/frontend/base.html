@@ -8,6 +8,8 @@
           content="FHIR, Australia, healthcare, interoperability, HL7, medical data">
     <link rel="stylesheet" href="{% static 'frontend/baseStyle.css' %}" />
     <link rel="stylesheet" href="{% static 'frontend/searchComponent.css' %}" />
+    <link rel="stylesheet" href="{% static 'frontend/homePageStyle.css' %}" />
+    <link rel="stylesheet" href="{% static 'frontend/globalStyle.css' %}" />
     <link rel="shortcut icon"
           type="image/png"
           href="{% static 'frontend/images/fire.png' %}" />
@@ -17,21 +19,23 @@
       <div class="header-content-wrapper">
         <a class="homepage-link" href="{% url 'homepage' %}">
           <h1 class="homepage-text">FHIR Australia</h1>
+          <h5 class="homepage-text-under">Fast Healthcare Interoperability Resources</h5>
         </a>
-
         {# DIRECTLY EMBEDDED GLOBAL SEARCH BAR #}
-        <form method="GET" action="{% url 'homepage' %}" class="global-search-form">
-          <input
-            type="text"
-            name="search_terms"
-            id="global_search_text"
-            value="{{ request.GET.search_terms|default_if_none:'' }}"
-            placeholder="Search by resource or IG name..."
-            aria-label="Search by resource or IG name"
-            class="unified-search-input"
-          />
-          <button type="submit" class="unified-search-button" aria-label="Perform search">
-            <img src="{% static 'frontend/images/search-icon.png' %}" alt="Search" class="search-icon" />
+        <form method="GET" action="{% url 'sections' %}" class="global-search-form">
+          <input type="text"
+                 name="search_terms"
+                 id="global_search_text"
+                 value="{{ request.GET.search_terms|default_if_none:'' }}"
+                 placeholder="Search by resource or IG name..."
+                 aria-label="Search by resource or IG name"
+                 class="unified-search-input" />
+          <button type="submit"
+                  class="unified-search-button"
+                  aria-label="Perform search">
+            <img src="{% static 'frontend/images/search-icon.png' %}"
+                 alt="Search"
+                 class="search-icon" />
           </button>
         </form>
       </div>
@@ -39,4 +43,15 @@
     {% block content %}
     {% endblock content %}
   </body>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="{% url 'homepage' %}">About</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Contact</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms</a>
+      </div>
+      <p>2025 Django Application. All rights reserved.</p>
+    </div>
+  </footer>
 </html>

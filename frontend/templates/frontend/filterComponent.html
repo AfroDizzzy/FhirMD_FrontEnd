@@ -1,0 +1,68 @@
+{% load static %}
+{% block content %}
+    <form method="GET" action="{% url 'sections' %}" class="filter-form">
+        {# Hidden input to preserve search_terms from global search when other filters are applied #}
+        {% if request.GET.search_terms %}
+            <input type="hidden"
+                   name="search_terms"
+                   value="{{ request.GET.search_terms }}" />
+        {% endif %}
+        <fieldset class="filter-group">
+            <legend>filter by Status</legend>
+            <input type="radio"
+                   value="Approved"
+                   name="approval"
+                   id="filter_status_app"
+                   {% if approval == 'Approved' %}checked{% endif %} />
+            <label for="filter_status_app">Approved</label>
+            <input type="radio"
+                   value="Withdrawn"
+                   name="approval"
+                   id="filter_status_wthd"
+                   {% if approval == 'Withdrawn' %}checked{% endif %} />
+            <label for="filter_status_wthd">Withdrawn</label>
+            <input type="radio"
+                   value="Pending"
+                   name="approval"
+                   id="filter_status_pend"
+                   {% if approval == 'Pending' %}checked{% endif %} />
+            <label for="filter_status_pend">Pending</label>
+            <input type="radio"
+                   value=""
+                   name="approval"
+                   id="filter_status_all"
+                   {% if not approval %}checked{% endif %} />
+            <label for="filter_status_all">All Statuses</label>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend>Other Filters</legend>
+            <input type="checkbox"
+                   value="1"
+                   name="certification"
+                   id="filter_certification"
+                   {% if certification == '1' %}checked{% endif %} />
+            <label for="filter_certification">Certification</label>
+            <div class="input-field">
+                <label for="filter_ig_name">Filter by IG Name:</label>
+                <select name="ig_name" id="filter_ig_name" class="unified-search-input">
+                    <option value="">All IGs</option>
+                    {% for ig_name_option in all_unique_igs %}
+                        <option value="{{ ig_name_option }}"
+                                {% if ig_name_filter == ig_name_option %}selected{% endif %}>
+                            {{ ig_name_option }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="filter_ig_version">Filter by IG Version:</label>
+                <select name="ig_version" id="filter_ig_version" class="unified-search-input">
+                    <option value="">All Versions</option>
+                    {# Options will be populated by JavaScript #}
+                </select>
+            </div>
+        </fieldset>
+        <button type="submit" class="apply-filters-button unified-search-button">Apply Filters</button>
+        <a href="{% url 'sections' %}" class="clear-filters-button">Clear Filters</a>
+    </form>
+{% endblock content %}

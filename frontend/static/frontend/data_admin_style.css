@@ -2,166 +2,169 @@
 
 /* Admin Index Page Styles */
 .admin-file-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
 }
 
 .admin-file-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 15px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    font-size: 1.05em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  font-size: 1.05em;
 }
 
 .admin-file-item span {
-    flex-grow: 1;
-    margin-right: 15px;
+  flex-grow: 1;
+  margin-right: 15px;
 }
 
 .status-badge {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    font-weight: bold;
-    color: white;
-    margin-left: 10px;
-    white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+  white-space: nowrap;
 }
 
 .status-has {
-    background-color: #28a745; /* Green */
+  background-color: #28a745; /* Green */
 }
 
 .status-no {
-    background-color: #dc3545; /* Red */
+  background-color: #dc3545; /* Red */
 }
 
-.edit-button, .create-button, .export-button { /* Added .export-button */
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.9em;
-    margin-left: 10px;
-    transition: background-color 0.2s ease;
+.edit-button,
+.create-button,
+.export-button {
+  /* Added .export-button */
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9em;
+  margin-left: 10px;
+  transition: var(--transition-background-colour);
 }
 
 .edit-button {
-    background-color: #007bff;
-    color: white;
+  background-color: #007bff;
+  color: white;
 }
 
 .edit-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .create-button {
-    background-color: #17a2b8; /* Teal */
-    color: white;
+  background-color: #17a2b8; /* Teal */
+  color: white;
 }
 
 .create-button:hover {
-    background-color: #138496;
+  background-color: #138496;
 }
 
 /* NEW style for the export button */
 .export-button {
-    background-color: #6f42c1; /* Purple */
-    color: white;
-    margin-bottom: 20px; /* Space between button and list */
+  background-color: #6f42c1; /* Purple */
+  color: white;
+  margin-bottom: 20px; /* Space between button and list */
 }
 
 .export-button:hover {
-    background-color: #563d7c;
+  background-color: #563d7c;
 }
 
 .admin-actions {
-    margin-top: 20px; /* Space from title/description */
-    text-align: right; /* Align export button to the right */
+  margin-top: 20px; /* Space from title/description */
+  text-align: right; /* Align export button to the right */
 }
-
 
 /* Edit Metadata Form Styles (no changes here) */
 .metadata-form {
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #eee;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #eee;
 }
 
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
 }
 
 .form-group input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box;
 }
 
 .readonly-field {
-    background-color: #e9ecef;
-    cursor: not-allowed;
+  background-color: #e9ecef;
+  cursor: not-allowed;
 }
 
 .form-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
 }
 
-.save-button, .back-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    transition: background-color 0.2s ease;
+.save-button,
+.back-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: var(--transition-background-colour);
 }
 
 .save-button {
-    background-color: #28a745; /* Green */
-    color: white;
+  background-color: #28a745; /* Green */
+  color: white;
 }
 
 .save-button:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .back-button {
-    background-color: #6c757d; /* Grey */
-    color: white;
+  background-color: #6c757d; /* Grey */
+  color: white;
 }
 
 .back-button:hover {
-    background-color: #5a6268;
+  background-color: #5a6268;
 }
 
 .error-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-bottom: 15px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
 }

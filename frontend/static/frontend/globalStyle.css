@@ -1,0 +1,28 @@
+:root {
+  --primary-color: #3b82f6;
+  --secondary-colour: #64748b;
+  --background-colour: #ffffff;
+  --background-colour-page: #f4f7f6;
+  --text-colour-white: #ffffff;
+  --text-colour-primary: #667eea;
+  --text-colour-primary-hover: ;
+  --text-colour-primary-hover-shadow: #667eea 1px 1px 5px;
+  --green: #28a745;
+  --green-hover: #218838;
+
+  --text-color: #1f2937;
+  --data-admin-background-colour: #ecf0f1;
+  --download-button: #000;
+  --download-button-hover: #000;
+  --back-button: #;
+  --back-button-hover: #;
+  --transition-smooth: transform 0.2s ease, box-shadow 0.2s ease;
+  --transition-smooth-text: text-shadow 0.2s ease, box-shadow 0.2s ease;
+  --transition-background-colour: var(--background-colour) 0.2s ease;
+  --transition-green-button: ;
+
+  --fixed-position: sticky;
+  --fixed-top: 0;
+  --fixed-left: 0;
+  --fixed-z-index: 1000;
+}
