@@ -1,7 +1,8 @@
 from django.urls import path
+from .views.jsonDetail import json_detail
 from .views.homepage import homepage
 from .views.sections import sections    
-from .views.sectionDetails import sectionDetails, json_detail
+from .views.sectionDetails import sectionDetails
 from .views import data_admin # Import the data_admin views
 
 urlpatterns = [
