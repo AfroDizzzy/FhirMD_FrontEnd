@@ -200,6 +200,8 @@ footer {
   left: var(--fixed-left);
   z-index: var(--fixed-z-index);
   background-color: var(--background-colour-page);
+  /* work around forbox shadows not respecting overflow hidden */
+  width: 101%;
 }
 
 /* Media queries for overall responsiveness */
