@@ -11,61 +11,56 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--background-colour-page);
 }
 
-.section-details-heading-div {
+.sections-details-page-header {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
-.content-section {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+.back-button {
+  border-width: 0;
+  background-color: var(--background-color);
+  margin-right: auto;
+  cursor: pointer;
+}
+.back-nav-icon :hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.item-list {
-  list-style: none;
+.sections-details-page-header-text {
+  flex: 1;
+  text-align: center;
+  align-items: center;
+}
+
+.back-nav-icon {
+  background: url("images/back.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
 }
 
 .item {
-  background: #f8f9ff;
-  border: 1px solid #e1e5f7;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  overflow: hidden;
-}
-
-.item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-link {
-  display: block;
-  padding: 1.2rem;
-  text-decoration: none;
-  color: inherit;
+  text-align: center;
 }
 
-.item-link:hover {
-  text-decoration: none;
-}
-
-.item-id {
-  color: #668eea;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.item-resourceType {
+.item-display-name {
   font-weight: bold;
   color: #667eea;
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
 }
 
 .item-description {
@@ -139,19 +134,4 @@ body {
 
 .current-filters .back-to-sections-filters:hover {
   background-color: #0056b3;
-}
-
-.back-link {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
-}
-
-.back-link:hover {
-  background-color: #024791;
 }

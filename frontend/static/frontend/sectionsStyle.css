@@ -52,6 +52,16 @@ body {
   font-size: 0.95rem;
 }
 
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-link {
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   /* .header-content h1 { font-size: 2rem; } - This should be in baseStyle.css */
   main {
