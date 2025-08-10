@@ -70,3 +70,85 @@
   background: none !important; /* Remove highlight.js default background if it conflicts */
   padding: 0 !important; /* Remove highlight.js default padding if it conflicts */
 }
+
+.metadata-heading {
+  font-weight: bold;
+  color: var(--text-colour-secondary);
+}
+
+.collapsible-button {
+  content: "▲";
+  width: 100%;
+  padding: 15px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-button:hover {
+  background: #0056b3;
+}
+
+.collapsible-button::after {
+  content: "▲";
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.collapsible-button.collapsed::after {
+  transform: rotate(-180deg);
+}
+
+.item-metadata {
+  padding: 20px;
+  background: white;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.item-metadata.collapsed {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.metadata-heading {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.item-metadata p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 12px;
+}
+
+.item-metadata strong {
+  color: #333;
+}
+
+.item-metadata ul {
+  margin: 5px 0 15px 20px;
+  color: #555;
+}
+
+.item-metadata li {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.metadata-value {
+  font-size: small;
+}
