@@ -16,6 +16,76 @@
           <button id="downloadJson" class="download-button">Download JSON</button>
         </div>
       </div>
+      <div class="metadata-information">
+        <button type="button" class="collapsible-button collapsed">Metadata</button>
+        <div class="item-metadata collapsed">
+          {% if not file_metadata %}<h6 class="metadata-label">No Metadata Avaliable</h6>{% endif %}
+          {% if file_metadata.Author %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">Author:</h6>
+              <p class="metadata-value">{{ file_metadata.Author|escape }}</p>
+            </div>
+          {% endif %}
+          {# Implementation Guides Section #}
+          {% if file_metadata.Parsed_IG_Notations %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">Implementation Guides:</h6>
+              <ul class="ig-list">
+                {% for ig in file_metadata.Parsed_IG_Notations %}
+                  <li class="ig-item">
+                    {{ ig.name|escape }}
+                    {% if ig.version %}: {{ ig.version|escape }}{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% elif file_metadata.IG or file_metadata.IG_Version %}
+            {# Fallback to legacy IG fields for transition period #}
+            {% if file_metadata.IG %}
+              <div class="metadata-field">
+                <h6 class="metadata-label">IG:</h6>
+                <p class="metadata-value">{{ file_metadata.IG|escape }}</p>
+              </div>
+            {% endif %}
+            {% if file_metadata.IG_Version %}
+              <div class="metadata-field">
+                <h6 class="metadata-label">IG Version:</h6>
+                <p class="metadata-value">{{ file_metadata.IG_Version|escape }}</p>
+              </div>
+            {% endif %}
+          {% endif %}
+          {% if file_metadata.PHI_Check %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">PHI Check:</h6>
+              <p class="metadata-value">{{ file_metadata.PHI_Check|escape }}</p>
+            </div>
+          {% endif %}
+          {% if file_metadata.Valid_Reference_values %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">Valid Reference Values:</h6>
+              <p class="metadata-value">{{ file_metadata.Valid_Reference_values|escape }}</p>
+            </div>
+          {% endif %}
+          {% if file_metadata.Placeholder1 %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">Placeholder1:</h6>
+              <p class="metadata-value">{{ file_metadata.Placeholder1|escape }}</p>
+            </div>
+          {% endif %}
+          {% if file_metadata.Placeholder2 %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">Placeholder2:</h6>
+              <p class="metadata-value">{{ file_metadata.Placeholder2|escape }}</p>
+            </div>
+          {% endif %}
+          {% if file_metadata.Notes %}
+            <div class="metadata-field">
+              <h6 class="metadata-label">Notes:</h6>
+              <p class="metadata-value">{{ file_metadata.Notes|escape }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
       {# The <pre><code> block for highlighted JSON #}
       <pre class="json-display"><code class="language-json">{{ pretty_json }}</code></pre>
     </section>
@@ -42,5 +112,23 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url); // Clean up the URL object
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('.collapsible-button');
+            const metadata = document.querySelector('.item-metadata');
+            let isCollapsed = true;
+            
+            button.addEventListener('click', function() {
+                isCollapsed = !isCollapsed;
+                
+                if (isCollapsed) {
+                    metadata.classList.add('collapsed');
+                    button.classList.add('collapsed');
+                } else {
+                    metadata.classList.remove('collapsed');
+                    button.classList.remove('collapsed');
+                }
+            });
+        });
   </script>
 {% endblock content %}
